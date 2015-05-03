@@ -1,0 +1,1 @@
+UBOOT_IMGADDR=0x00208000 # Added by odroid-c-uboot
