@@ -1,7 +1,7 @@
-%global commit 9c256c87b5ba97a626138d60f5af1ad5c235d55a
+%global commit c878e20536aa4924aca6b29e641cf5b9864a9f38
 
 Name:           odroid-c-uboot
-Version:        2015.01.03
+Version:        2015.04.06
 Release:        1%{?dist}
 Summary:        U-boot for ODROID-C
 
@@ -62,5 +62,9 @@ done < %{_datadir}/%{name}/grubby-%{version}-%{release}
 /boot/uboot/hardkernel-720.bmp
 
 %changelog
+* Sun May 03 2015 Scott K Logan <logans@cottsay.net> - 2015.04.06-1
+- Various fixes in boot.ini
+- Update to version 2015.04.06
+
 * Sat May 02 2015 Scott K Logan <logans@cottsay.net> - 2015.01.03-1
 - Initial package
