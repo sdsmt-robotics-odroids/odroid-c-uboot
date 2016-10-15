@@ -1,8 +1,8 @@
-%global commit e6d5633f1654e3a43c68ca10e4b939aa12a2040f
+%global commit 86125f8efd6b3a3fc0839a03e1c0e9507999449d
 
 Name:           odroid-c-uboot
-Version:        2015.08.07
-Release:        2%{?dist}
+Version:        2016.10.10
+Release:        1%{?dist}
 Summary:        U-boot for ODROID-C
 
 Group:          System Environment/Base
@@ -73,6 +73,9 @@ done < %{_datadir}/%{name}/grubby-%{version}-%{release}
 /boot/uboot/hardkernel-720.bmp
 
 %changelog
+* Fri Oct 14 2016 Scott K Logan <logans@cottsay.net> - 2016.10.10-1
+- Pull latest source
+
 * Sun Dec 06 2015 Scott K Logan <logans@cottsay.net> - 2015.08.07-2
 - Add enabledac var and clean up boot.ini
 - Use Hardkernel logo instead of test pattern
