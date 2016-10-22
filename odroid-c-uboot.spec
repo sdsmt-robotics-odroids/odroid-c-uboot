@@ -2,7 +2,7 @@
 
 Name:           odroid-c-uboot
 Version:        2016.10.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        U-boot for ODROID-C
 
 Group:          System Environment/Base
@@ -18,6 +18,7 @@ Patch1:         %{name}-2015.04.06-arm-asm-io-h-use-static-inline.patch
 Patch2:         %{name}-2015.04.06-show-boot-progress-weak.patch
 Patch3:         %{name}-2015.04.06-leds-weak.patch
 Patch4:         %{name}-2015.04.06-replace-wait-ms-with-mdelay.patch
+Patch5:         %{name}-2016.10.10-revert-kitkat-scaling.patch
 Patch100:       %{name}-2015.04.06-aml-meson-armv5-compat.patch
 
 # We always need to use a cross compiler because we can't use hardfloat static
@@ -40,6 +41,7 @@ default boot.ini, and also configures grubby.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 make %{?_smp_mflags} odroidc_config
@@ -73,6 +75,9 @@ done < %{_datadir}/%{name}/grubby-%{version}-%{release}
 /boot/uboot/hardkernel-720.bmp
 
 %changelog
+* Sat Oct 22 2016 Scott K Logan <logans@cottsay.net> - 2016.10.10-2
+- Revert a bad logo scaling patch
+
 * Fri Oct 14 2016 Scott K Logan <logans@cottsay.net> - 2016.10.10-1
 - Pull latest source
 

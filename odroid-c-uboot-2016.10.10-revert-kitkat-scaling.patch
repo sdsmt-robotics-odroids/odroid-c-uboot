@@ -1,0 +1,44 @@
+From df1e81811479a8d9b545385f8d2a2335a1d49a1c Mon Sep 17 00:00:00 2001
+From: Scott K Logan <logans@cottsay.net>
+Date: Sat, 22 Oct 2016 00:21:22 -0700
+Subject: [PATCH] Revert "ODROID-C: Fixed bootsplash for C1 Kitkat."
+
+This reverts commit 1cb86d529900af9f2d7d5b9240420e3c82c49b04.
+
+The commit broke logo scaling when displaying a 1080p logo.
+---
+ common/cmd_logo.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/common/cmd_logo.c b/common/cmd_logo.c
+index 0d13ff8..6516840 100644
+--- a/common/cmd_logo.c
++++ b/common/cmd_logo.c
+@@ -33,12 +33,24 @@ static int do_logo_size(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[
+         } else if(strncmp(mode, "4k2ksmpte", 9) == 0) {
+             width = 4096;
+             height = 2160;    
++#ifndef CONFIG_ODROIDC_REV2
++            fbw = 1920;
++            fbh = 1080;
++#endif
+         } else if(strncmp(mode, "4k2k", 4) == 0) {
+             width = 3840;
+             height = 2160;    
++#ifndef CONFIG_ODROIDC_REV2
++            fbw = 1920;
++            fbh = 1080;
++#endif
+         } else {
+             width = 1920;
+             height = 1080;
++#ifndef CONFIG_ODROIDC_REV2
++            fbw = 1920;
++            fbh = 1080;
++#endif
+         } 
+         memset(buf, 0 , 8);
+         sprintf(buf, "%d", width);
+-- 
+2.5.5
+
