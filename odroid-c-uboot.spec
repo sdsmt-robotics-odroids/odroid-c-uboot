@@ -1,8 +1,8 @@
-%global commit 86125f8efd6b3a3fc0839a03e1c0e9507999449d
+%global commit b7b8dc21b64b9494618325c9b4d2fbae728aeed6
 
 Name:           odroid-c-uboot
-Version:        2016.10.10
-Release:        2%{?dist}
+Version:        2017.05.31
+Release:        1%{?dist}
 Summary:        U-boot for ODROID-C
 
 Group:          System Environment/Base
@@ -75,6 +75,9 @@ done < %{_datadir}/%{name}/grubby-%{version}-%{release}
 /boot/uboot/hardkernel-720.bmp
 
 %changelog
+* Sat Jan 20 2018 Scott K Logan <logans@cottsay.net> - 2017.05.31-1
+- Pull latest source
+
 * Sat Oct 22 2016 Scott K Logan <logans@cottsay.net> - 2016.10.10-2
 - Revert a bad logo scaling patch
 
