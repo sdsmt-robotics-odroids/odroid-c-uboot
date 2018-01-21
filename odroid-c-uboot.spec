@@ -13,12 +13,13 @@ Source1:        boot.ini
 Source2:        grubby
 Source3:        hardkernel-1080.bmp
 Source4:        hardkernel-720.bmp
-Patch0:         %{name}-2015.04.06-gcc5.patch
+Patch0:         %{name}-2016.10.10-sync-linux-compiler-includes.patch
 Patch1:         %{name}-2015.04.06-arm-asm-io-h-use-static-inline.patch
 Patch2:         %{name}-2015.04.06-show-boot-progress-weak.patch
 Patch3:         %{name}-2015.04.06-leds-weak.patch
 Patch4:         %{name}-2015.04.06-replace-wait-ms-with-mdelay.patch
 Patch5:         %{name}-2016.10.10-revert-kitkat-scaling.patch
+Patch6:         %{name}-2016.10.10-add-vframe-provider-s-definition.patch
 Patch100:       %{name}-2015.04.06-aml-meson-armv5-compat.patch
 
 # We always need to use a cross compiler because we can't use hardfloat static
@@ -42,6 +43,7 @@ default boot.ini, and also configures grubby.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 make %{?_smp_mflags} odroidc_config
@@ -77,6 +79,7 @@ done < %{_datadir}/%{name}/grubby-%{version}-%{release}
 %changelog
 * Sat Jan 20 2018 Scott K Logan <logans@cottsay.net> - 2017.05.31-1
 - Pull latest source
+- Sync linux includes for new gcc compat
 
 * Sat Oct 22 2016 Scott K Logan <logans@cottsay.net> - 2016.10.10-2
 - Revert a bad logo scaling patch
